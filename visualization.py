@@ -2,12 +2,26 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+from sklearn.model_selection import train_test_split
 
 def costfunction(X,y,theta):
+    # #hinge loss
     m = np.size(y)
     h = X @ theta    
     J = np.sum(np.where(0<h-y+1,h-y+1,0))/m
     return J
+
+    # MSE (Mean Square Error)
+    # m = np.size(y)
+    # h = X @ theta
+    # J = float((1./(2*m)) * (h - y).T @ (h - y));    
+    # return J
+
+    # RMSE (Root Mean Square Error)
+    # m = np.size(y)
+    # h = X @ theta
+    # J = float((1./(2*m)) * (h - y).T @ (h - y))**(1/2)
+    # return J
 
 
 def gradient_descent(X,y,theta,alpha = 0.0005,num_iters=1000):
@@ -27,12 +41,11 @@ def gradient_descent(X,y,theta,alpha = 0.0005,num_iters=1000):
 
     return theta,J_history, theta_0_hist, theta_1_hist
 
-x = np.linspace(0,1,40)
+x = np.linspace(-1,1,40)
 noise = 1*np.random.uniform(size = 40)
 y = np.sin(x * 1.5 * np.pi ) 
 y_noise = (y + noise).reshape(-1,1)
 X = np.vstack((np.ones(len(x)),x)).T
-
 
 #Setup of meshgrid of theta values
 T0, T1 = np.meshgrid(np.linspace(-1,3,100),np.linspace(-6,2,100))

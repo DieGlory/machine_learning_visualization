@@ -1,14 +1,14 @@
-# from sklearn.datasets import load_iris
-# from sklearn.linear_model import SGDClassifier
-# from sklearn.model_selection import train_test_split
-# from sklearn.metrics import classification_report
-# import numpy as np
-# import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.linear_model import SGDClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import classification_report
+import numpy as np
+import matplotlib.pyplot as plt
 
-# iris = load_iris()
+iris = load_iris()
 
-# iris_data = iris.data
-# iris_label = iris.target
+iris_data = iris.data
+iris_label = iris.target
 # iris_data_s = iris_data[:,2:4]
 
 # print(iris.keys())
@@ -28,10 +28,13 @@
 # # ax = fig.add_subplot(111,projection='3d')
 # plt.scatter(iris_data_s[:,0],iris_data_s[:,1])
 # plt.show()
-import numpy as np
+# import numpy as np
 # T0, T1 = np.meshgrid(np.linspace(-1,3,100),np.linspace(-6,2,100))
 # print(T0)
 # print(T1)
-x = np.linspace(0,1,40)
-X = np.vstack((np.ones(len(x)),x)).T
-print(X)
+# x = np.linspace(0,1,40)
+# X = np.vstack((np.ones(len(x)),x)).T
+# print(x)
+
+x = iris_data[:,3]
+print(np.shape(x))
